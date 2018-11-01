@@ -1,0 +1,68 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.1",
+	"appid": "wxc320c7276d9edad4",
+	"projectname": "%E6%9C%88%E8%80%83%E6%A0%B8%E9%A2%98%E5%BA%93",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"cloudfunctionRoot": "cloudfunctions/",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "questions",
+					"pathName": "pages/questions/questions",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "errorNotes",
+					"pathName": "pages/errorNotes/errorNotes",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "collection",
+					"pathName": "pages/collection/collection",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mine",
+					"pathName": "pages/mine/mine"
+				}
+			]
+		}
+	}
+}

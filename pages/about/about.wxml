@@ -1,0 +1,8 @@
+<!--pages/about/about.wxml-->
+
+<view class="container ">
+  <text>版本信息 </text>
+  <text>1.0.0</text>
+  <text>联系作者</text>
+  <text>504435165@qq.com</text>
+</view>

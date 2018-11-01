@@ -1,0 +1,16 @@
+/* pages/uploadQ/uploadQ.wxss */
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #F6F6F6;
+  
+  padding-top: 400rpx;
+}
+text {
+  font-size: 20pt;
+  color: #888;
+}

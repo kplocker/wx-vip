@@ -1,0 +1,5 @@
+<!--pages/uploadQ/uploadQ.wxml-->
+
+<view class="container ">
+  <text>敬请期待...</text>
+</view>

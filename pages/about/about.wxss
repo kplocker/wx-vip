@@ -1,0 +1,16 @@
+/* pages/about/about.wxss */
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #F6F6F6;
+  
+  padding-top: 200rpx;
+}
+text {
+  line-height: 2rem;
+  color: #888;
+}

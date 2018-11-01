@@ -1,0 +1,44 @@
+<!--pages/mine/mine.wxml-->
+
+<view class="container ">
+  <view class="page__hd header w100">
+    <view class="userinfo"> 
+      <block wx:if="{{!hasUserInfo && canIUse}}">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="../../public/images/account.png" mode="cover"></image>
+        <button type="primary" size="mini" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn"> 登陆/注册 </button>
+        <text class="slogan">梦想成就未来</text>
+      </block>
+      <block wx:else>
+        <image class="userinfo-avatar userinfo-avatar-hasgone" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">欢迎 {{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="weui-cells__title"></view>
+  <view class="page__bd w100 content-box">
+    <view class="weui-cells weui-cells_after-title" bindtap="naviToUpload">
+      <view class="weui-cell list-box">
+          <view class="weui-cell__hd">
+              <image src="../../public/images/upload.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+          </view>
+          <view class="weui-cell__bd list-text">上传题目</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell list-box">
+        <button open-type="share" class="share-btn"></button>
+        <view class="weui-cell__hd">
+            <image src="../../public/images/share.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd list-text">推荐好友</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cell list-box" bindtap="naviToAbout">
+          <view class="weui-cell__hd">
+              <image src="../../public/images/about.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+          </view>
+          <view class="weui-cell__bd list-text">关于我们</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>    
+    </view>
+  </view>
+</view>

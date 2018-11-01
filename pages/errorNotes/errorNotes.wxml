@@ -1,0 +1,79 @@
+<!--pages/errorNotes/errorNotes.wxml-->
+
+<view class="container">
+  <!-- 加载页 -->
+  <view class="loading" wx:if="{{!loadingFlag}}">
+    <view class="loading-box">
+      <image src="../../public/images/questions-page/loading.gif" class="loading-icon"></image>
+      <text>加载中...</text>
+    </view>
+  </view>
+  <!-- 无数据提示 -->
+  <view class="no-Data" wx:if="{{dataEmptyFlag}}">
+    <view class="no-Data-box">
+      <image src="../../public/images/error-notes/zan.jpeg" class="no-Data-icon"></image>
+      <text>您还没有错题噢！</text>
+    </view>
+  </view>
+  <view class="header">
+    <view class="header-content">
+      <text class="question-type">{{questionType==0?"单选题":"多选题"}}</text>
+      <text class="question-count">{{currentQuestionCount + 1}}/{{questionCount}}</text>
+    </view>
+  </view>
+  <scroll-view scroll-y="true" class="content">
+    <view class="question">{{questionItem.question}}</view>
+    <view class="answers">
+      <view class="answer" id="answer_0">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[0] == 1}}" class="word-icon">A</text>
+            <icon wx:elif="{{answerFlag[0] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+          </block>    
+        </view>
+      <text>{{questionItem.item1}}</text>
+      </view>
+      <view class="answer" id="answer_1">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[1] == 1}}" class="word-icon">B</text>
+            <icon wx:elif="{{answerFlag[1] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+          </block>          
+        </view>
+      <text>{{questionItem.item2}}</text>
+      </view>
+      <view class="answer" id="answer_2">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[2] == 1}}" class="word-icon">C</text>
+            <icon wx:elif="{{answerFlag[2] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+          </block>
+        </view>
+      <text>{{questionItem.item3}}</text>
+      </view>
+      <view class="answer" id="answer_3">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[3] == 1}}" class="word-icon">D</text>
+            <icon wx:elif="{{answerFlag[3] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+          </block>          
+        </view>
+      <text>{{questionItem.item4}}</text>
+      </view>
+    </view>
+    <view class="btnBlk">
+      <button type ="primary" class="l-n-btn" bindtap="lastQ">上一题</button>
+      <button type ="primary" class="l-n-btn" bindtap="nextQ">下一题</button>
+    </view>
+  </scroll-view>  
+  <view class="footer">
+    <view class="footer-box delete" bindtap="deleteItem">
+      <image src="../../public/images/x.png" class="footer-icon-delete"></image>
+      <text class="footer-text">删除</text>
+    </view>
+    <view class="footer-box empty" bindtap="deleteAll">
+      <image src="../../public/images/empty.png" class="footer-icon-empty"></image>
+      <text class="footer-text">清空错题本</text>
+    </view>
+  </view>
+</view>

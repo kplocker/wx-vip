@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/logs/logs",
+    "pages/questions/questions",
+    "pages/errorNotes/errorNotes",
+    "pages/collection/collection",
+    "pages/about/about",
+    "pages/uploadQ/uploadQ"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "月考核题库",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#f66417",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "public/images/index.png",
+      "selectedIconPath": "public/images/index1.png"
+      
+    },
+    {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "public/images/mine.png",
+      "selectedIconPath": "public/images/mine1.png"
+    }]
+  }
+}

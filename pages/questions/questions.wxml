@@ -1,0 +1,91 @@
+<!--pages/questions/questions.wxml-->
+
+<view class="container">
+  <!-- 加载页 -->
+  <view class="loading" wx:if="{{!loadingFlag}}">
+    <view class="loading-box">
+      <image src="../../public/images/questions-page/loading.gif" class="loading-icon"></image>
+      <text>加载中...</text>
+    </view>
+  </view>
+  <!-- 错题本提示 -->
+  <!-- <view class="errnote-alert" wx:if="{{addToErrorNotesAlertShow}}" bindtap="onErrorMaskTap">
+    <view wx:if="{{addToErrorNotesFlag}}" class="add-error-text">
+      <icon type="success" size="50" color="green" class=".add-icon"></icon>
+      <text class="add-error">已加入错题本</text>
+    </view>
+    <view wx:else class="add-error-text">
+       <icon type="cancel" size="50" class=".add-icon"></icon>
+       <text class="add-error">加入错题本失败或已加入</text>  
+    </view>    
+  </view> -->
+  <view class="header">
+    <view class="header-content">
+      <text class="question-type">{{questionType==0?"单选题":"多选题"}}</text>
+      <text class="question-count">{{currentQuestionCount + 1}}/{{questionCount}}</text>
+    </view>
+  </view>
+  <scroll-view scroll-y="true" class="content">
+    <view class="question">{{questionItem.question}}</view>
+    <view class="answers">
+      <view class="answer" bindtap="onAnswerTap" id="answer_0">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[0] == 1}}" class="word-icon">A</text>
+            <icon wx:elif="{{answerFlag[0] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+            <icon wx:elif="{{answerFlag[0] == 3}}" type="success" size="30" color="#ccc" class="answer-flag-icon"></icon>
+            <icon wx:else type="cancel" size="30" class="answer-flag-icon"></icon>
+          </block>    
+        </view>
+      <text>{{questionItem.item1}}</text>
+      </view>
+      <view class="answer" bindtap="onAnswerTap" id="answer_1">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[1] == 1}}" class="word-icon">B</text>
+            <icon wx:elif="{{answerFlag[1] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+            <icon wx:elif="{{answerFlag[1] == 3}}" type="success" size="30" color="#ccc" class="answer-flag-icon"></icon>
+            <icon wx:else type="cancel" size="30" class="answer-flag-icon"></icon>
+          </block>          
+        </view>
+      <text>{{questionItem.item2}}</text>
+      </view>
+      <view class="answer" bindtap="onAnswerTap" id="answer_2">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[2] == 1}}" class="word-icon">C</text>
+            <icon wx:elif="{{answerFlag[2] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+            <icon wx:elif="{{answerFlag[2] == 3}}" type="success" size="30" color="#ccc" class="answer-flag-icon"></icon>
+            <icon wx:else type="cancel" size="30" class="answer-flag-icon"></icon>
+          </block>
+        </view>
+      <text>{{questionItem.item3}}</text>
+      </view>
+      <view class="answer" bindtap="onAnswerTap" id="answer_3">
+        <view class="answer-icon">
+          <block>
+            <text wx:if="{{answerFlag[3] == 1}}" class="word-icon">D</text>
+            <icon wx:elif="{{answerFlag[3] == 2}}" type="success" size="30" class="answer-flag-icon"></icon>
+            <icon wx:elif="{{answerFlag[3] == 3}}" type="success" size="30" color="#ccc" class="answer-flag-icon"></icon>
+            <icon wx:else type="cancel" size="30" class="answer-flag-icon"></icon>
+          </block>          
+        </view>
+      <text>{{questionItem.item4}}</text>
+      </view>
+    </view>
+    <view class="btnBlk">
+      <button type ="primary" plain="true" class="submitBtn" hidden="{{questionType==0&&!subFlag?true:false}}" disabled="{{subFlag}}" bindtap="onSubmit">提交</button>
+      <button type ="primary" class="l-n-btn" bindtap="lastQ">上一题</button>
+      <button type ="primary" class="l-n-btn" bindtap="nextQ">下一题</button>
+    </view>
+  </scroll-view>  
+  <view class="footer">
+    <button class="collect-transpond collect" bindtap="onCollect">
+      <image wx:if="{{!collectFlag}}" src="../../public/images/questions-page/collection.png" class="collect-icon"></image>
+      <image wx:else src="../../public/images/questions-page/collection1.png" class="collect-icon"></image>
+    </button>
+    <button class="collect-transpond transpond" open-type="share">
+      <image src="../../public/images/questions-page/transpond.png" class="transpond-icon"></image>
+    </button>
+  </view>
+</view>

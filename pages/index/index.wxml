@@ -1,0 +1,43 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+<view class="container">
+  <view class="header">
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">欢迎 {{userInfo.nickName}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="main">
+    <view class="item item1" bindtap="navigateToQuestionsPage">
+      <image src="../../public/images/index/pen.jpg" class="icon answer-icon"></image>
+      <text class="item-text">开始答题</text>
+    </view>
+    <view class="item item2"  bindtap="navigateToErrorNotes">
+      <image src="../../public/images/index/note.jpg" class="icon note-icon"></image>
+      <text class="item-text">错题本</text>
+    </view>
+    <view class="item item3" bindtap="navigateToLogs">
+      <image src="../../public/images/index/log.jpg" class="icon log-icon"></image>
+      <text class="item-text">答题记录</text>
+    </view>
+    <view class="item item4"  bindtap="navigateToCollect">
+      <image src="../../public/images/index/heart.png" class="icon collection-icon"></image>
+      <text class="item-text">收藏夹</text>
+    </view>
+    
+  </view>
+</view>
