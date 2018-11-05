@@ -1,0 +1,17 @@
+<!--pages/setting/setting.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    
+    <view class="page__bd">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+        <view class="weui-cells weui-cells_after-title setting-box">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">自动加入错题本</view>
+                <view class="weui-cell__ft">
+                    <switch checked="{{autoAddErrorBook}}" bindchange="autoAddErrorBookSwitchChange"/>
+                </view>
+            </view>
+        </view>
+        
+    </view>
+</view>

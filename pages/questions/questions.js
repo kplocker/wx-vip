@@ -65,6 +65,17 @@ Page({
       var currentData = this.data.questionItems[this.data.currentQuestionCount]
       this.isCollected(currentData)
     })
+    // 自动添加错题本
+    var autoAddErrorBookFlag = wx.getStorageSync('autoAddErrorBookFlag')
+    if (autoAddErrorBookFlag != null) {
+      this.setData({
+        autoAddErrorBook: autoAddErrorBookFlag
+      })
+    } else {
+      this.setData({
+        autoAddErrorBook: true
+      })
+    }
     
   },
 
@@ -117,9 +128,13 @@ Page({
         this.setData({
           ["answerFlag[" + answerNumber + "]"]: 2
         })
-
+        
+        console.log(this.data.autoAddErrorBook)
         // 加入错题本
-        this.addToErrorNotes(this.data.questionItems[this.data.currentQuestionCount])
+        if (this.data.autoAddErrorBook) {
+          this.addToErrorNotes(this.data.questionItems[this.data.currentQuestionCount])
+        }
+        
   
       }
     } else if ((this.data.answerFlag[clickAnswerNumber] == 1 || this.data.answerFlag[clickAnswerNumber] == 3) &&!this.data.clickFlag && this.data.questionType == 1 && !this.data.subFlag){    //多选题选择
@@ -156,47 +171,7 @@ Page({
       })
     }, delay)
   },
-  // touchstart: function(e) {
-  //   touchDot = e.touches[0].pageX 
-  //   interval = setInterval(function () {
-  //     time++;
-  //   }, 100) // 使用js计时器记录时间 
-  //   console.log(e.touches[0].pageX)
-  // },
-  // touchend: function (e) {
-  //   var touchMove = e.changedTouches[0].pageX
-  //   // 向左滑动   
-  //   if (touchMove - touchDot <= -40 && time < 10) {
-      
-  //     //执行切换页面的方法
-  //     if (this.data.currentQuestionCount + 1 < this.data.questionCount) {
-  //       this.changePageData(++this.data.currentQuestionCount,10) // 下一页
-  //       this.setData({
-  //         scrollLeft: 0
-  //       })
-  //     }
-  //   }
-  //   // 向右滑动   
-  //   if (touchMove - touchDot >= 40 && time < 10) {
-  //     //执行切换页面的方法
-  //     if (this.data.currentQuestionCount-1 >= 0) {
-  //       this.changePageData(--this.data.currentQuestionCount, 10) // 上一页
-  //       this.setData({
-  //         scrollLeft: 0
-  //       })
-  //     }      
-  //   }
-  //   clearInterval(interval) // 清除setInterval
-  //   time = 0
-    
-  // },
-  // onTouchmove: function(e) {
-  //   var touchMove = e.changedTouches[0].pageX
-  //   this.setData({
-  //     scrollLeft: (touchMove - touchDot) + "px"
-  //   })
-  //   console.log(e.changedTouches[0].pageX)
-  // }
+
   lastQ: function(e) {
     if (this.data.currentQuestionCount - 1 >= 0) {
       this.changePageData(--this.data.currentQuestionCount, 10) // 上一页 
@@ -263,7 +238,10 @@ Page({
           ["answerFlag[" + this.data.questionItem.answer[k] + "]"]: 2
         })
       }
-      this.addToErrorNotes(this.data.questionItems[this.data.currentQuestionCount])
+      console.log(this.data.autoAddErrorBook)
+      if (app.globalData.autoAddErrorBook) {
+        this.addToErrorNotes(this.data.questionItems[this.data.currentQuestionCount])
+      }
     }
 
     
@@ -283,22 +261,20 @@ Page({
       }
     })
     .then(res => {
-        // this.setData({
-        //   addToErrorNotesAlertShow: 1,
-        //   addToErrorNotesFlag: 1
-        // })  
+        
       wx.showToast({
         title: '已加入错题本',
         icon: 'success',
         duration: 1500
-      });          
+      })         
     })
-    .catch(error => {
+    .catch(err => {
+      console.log(err)
       wx.showToast({
-        title: '已存在',
+        title: '添加失败或已存在',
         icon: 'success',
         duration: 1500
-      });
+      })
     })
   },
   onErrorMaskTap: function(e) {
@@ -335,7 +311,14 @@ Page({
           title: '已收藏',
           icon: 'success',
           duration: 1500
-        });
+        })
+      })
+      .catch(err => {
+        wx.showToast({
+          title: '收藏失败',
+          icon: 'success',
+          duration: 1500
+        })
       })
     }else{
       this.removeCollect(data)
@@ -365,3 +348,44 @@ Page({
   }
 
 })
+// touchstart: function(e) {
+  //   touchDot = e.touches[0].pageX 
+  //   interval = setInterval(function () {
+  //     time++;
+  //   }, 100) // 使用js计时器记录时间 
+  //   console.log(e.touches[0].pageX)
+  // },
+  // touchend: function (e) {
+  //   var touchMove = e.changedTouches[0].pageX
+  //   // 向左滑动   
+  //   if (touchMove - touchDot <= -40 && time < 10) {
+
+  //     //执行切换页面的方法
+  //     if (this.data.currentQuestionCount + 1 < this.data.questionCount) {
+  //       this.changePageData(++this.data.currentQuestionCount,10) // 下一页
+  //       this.setData({
+  //         scrollLeft: 0
+  //       })
+  //     }
+  //   }
+  //   // 向右滑动   
+  //   if (touchMove - touchDot >= 40 && time < 10) {
+  //     //执行切换页面的方法
+  //     if (this.data.currentQuestionCount-1 >= 0) {
+  //       this.changePageData(--this.data.currentQuestionCount, 10) // 上一页
+  //       this.setData({
+  //         scrollLeft: 0
+  //       })
+  //     }      
+  //   }
+  //   clearInterval(interval) // 清除setInterval
+  //   time = 0
+
+  // },
+  // onTouchmove: function(e) {
+  //   var touchMove = e.changedTouches[0].pageX
+  //   this.setData({
+  //     scrollLeft: (touchMove - touchDot) + "px"
+  //   })
+  //   console.log(e.changedTouches[0].pageX)
+  // }

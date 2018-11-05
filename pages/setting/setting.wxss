@@ -1,0 +1,5 @@
+/* pages/setting/setting.wxss */
+
+.setting-box {
+  margin-top: 20px;
+}

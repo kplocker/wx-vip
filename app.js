@@ -43,5 +43,8 @@ App({
   globalData: {
     userInfo: null,
     openId: null
+  },
+  onShow: function() {
+
   }
 })

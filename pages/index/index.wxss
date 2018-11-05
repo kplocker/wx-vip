@@ -43,15 +43,23 @@
 }
 
 .userinfo-avatar {
-  width: 160rpx;
-  height: 160rpx;
+  width: 90rpx;
+  height: 90rpx;
   margin: 30rpx;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #f1f1f1;
+  padding: 30rpx;
+}
+
+.userinfo-avatar-hasgone {
+  width: 130rpx;
+  height: 130rpx;
+  padding: 0;
 }
 
 .userinfo-nickname {
   color: #888;
+  font-size: 17pt;
 }
 
 .main {

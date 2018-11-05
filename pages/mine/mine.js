@@ -16,7 +16,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
   },
   // 点击获取图像信息
   getUserInfo: function (e) {
@@ -42,6 +64,11 @@ Page({
   naviToUpload: function () {
     wx.navigateTo({
       url: '../uploadQ/uploadQ'
+    })
+  },
+  onSetting: function() {
+    wx.navigateTo({
+      url: '../setting/setting'
     })
   }
 

@@ -13,6 +13,9 @@
         <text class="userinfo-nickname">欢迎 {{userInfo.nickName}}</text>
       </block>
     </view>
+    <view class="setting" bindtap="onSetting">
+      <image class="setting-image" src="../../public/images/setting.png"></image>
+    </view>
   </view>
   <view class="weui-cells__title"></view>
   <view class="page__bd w100 content-box">
